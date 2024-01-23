@@ -1,3 +1,44 @@
 <resources>
     <string name="app_name">PROJECT - ACADEAMEASE1</string>
+    <string name="edit">edit</string>
+    <string name="instructor">name_instructor</string>
+    <string name="subject_name">name_subject_string\n</string>
+    <string name="day_time_in_time_out">name_daytimeINtimeOUT_string</string>
+    <string name="day_time_in_time">DAY | TIME IN - TIME OUT</string>
+    <string name="album">Album</string>
+    <string name="notes">Notes</string>
+    <string name="files">Files</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="albumTab">Album</string>
+    <string name="notesTab">Notes</string>
+    <string name="filesTab">Files</string>
+    <string name="albumAdd">add</string>
+    <string name="notesContent">NOTES</string>
+    <string name="upload_photo">Upload Photo</string>
+    <string name="enter_your_note">Enter your note</string>
+    <string name="save_note">Save Note</string>
+    <string name="upload_file">Upload File</string>
+    <string name="button_addPhoto">TODO</string>
+    <string name="add">ADD</string>
+    <string name="add_notes">ADD</string>
+    <string name="add_files">ADD</string>
+    <string name="uploadbutt">TODO</string>
+    <string name="upload">TODO</string>
+    <string name="add_a_caption">Add a caption...</string>
+    <string name="imageuploadin">TODO</string>
+    <string name="note_title">Note Title</string>
+    <string name="type_note_here">Type note here..</string>
+    <string name="backbutton">back\n</string>
+    <string name="no_file_selected">no file selected</string>
+    <string name="file">TODO</string>
+    <string name="show_all">Show All</string>
+    <string name="uploadf">Upload</string>
+    <string name="select_an_image">select an image</string>
+    <string name="imageName">TextView</string>
+    <string name="courses">COURSES</string>
+    <string name="course_id">Course ID:</string>
+    <string name="instructor_deets">Instructor:</string>
+    <string name="subject">Subject:</string>
+
 </resources>

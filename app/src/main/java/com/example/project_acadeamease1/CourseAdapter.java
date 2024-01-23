@@ -21,13 +21,15 @@ public class CourseAdapter extends FirestoreRecyclerAdapter<CourseModel, CourseA
     public CourseAdapter(@NonNull FirestoreRecyclerOptions<CourseModel> options, Context context) {
         super(options);
         this.context = context;
+
+        
     }
 
     @Override
     protected void onBindViewHolder(@NonNull CourseViewHolder holder, int position, @NonNull CourseModel course) {
         holder.courseSubject.setText(course.subject);
 
-        /*holder.itemView.setOnClickListener(v->{
+        holder.itemView.setOnClickListener(v->{
             Intent intent = new Intent(context, CourseDetails.class);
             intent.putExtra("subject",course.subject);
             intent.putExtra("instructor", course.instructor);
@@ -35,7 +37,9 @@ public class CourseAdapter extends FirestoreRecyclerAdapter<CourseModel, CourseA
             String courseId = this.getSnapshots().getSnapshot(position).getId();
             intent.putExtra("courseId",courseId);
             context.startActivity(intent);
-        });*/
+        });
+
+
     }
 
     @NonNull
@@ -55,5 +59,6 @@ public class CourseAdapter extends FirestoreRecyclerAdapter<CourseModel, CourseA
             courseSubject = itemView.findViewById(R.id.course_Subject);
         }
     }
+
 }
 

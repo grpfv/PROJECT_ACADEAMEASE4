@@ -10,7 +10,7 @@
         android:id="@+id/classSchedule"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="COURSES"
+        android:text="@string/courses"
         android:textColor="#113946"
         android:textStyle="bold"
         android:textSize="34sp"
@@ -22,13 +22,14 @@
         android:id="@+id/launchScheduleButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_toEndOf="@id/classSchedule"
-        android:src="@drawable/add"
-        android:background="@android:color/transparent"
-        android:layout_marginTop="14dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="14dp"
         android:layout_marginEnd="8dp"
-        android:scaleType="centerInside"/>
+        android:layout_toEndOf="@id/classSchedule"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/add"
+        android:scaleType="centerInside"
+        android:src="@drawable/add" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
