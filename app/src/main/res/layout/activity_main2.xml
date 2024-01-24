@@ -75,7 +75,7 @@
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toTopOf="@+id/boxpassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintHorizontal_bias="0.485"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/boxusername" />
 
@@ -130,7 +130,7 @@
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toTopOf="@+id/loginbut"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintHorizontal_bias="0.485"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/boxpassword" />
 

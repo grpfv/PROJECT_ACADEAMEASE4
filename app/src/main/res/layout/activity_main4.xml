@@ -193,13 +193,14 @@
     <View
         android:id="@+id/sectionBox"
         android:layout_width="377dp"
-        android:layout_height="59dp"
+        android:layout_height="70dp"
         android:layout_marginTop="60dp"
         android:background="@drawable/buttonbg"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rectangularBox" />
+        app:layout_constraintTop_toBottomOf="@+id/rectangularBox"
+        app:layout_constraintVertical_bias="0.008" />
 
     <TextView
         android:id="@+id/classes"
@@ -218,7 +219,7 @@
     <View
         android:id="@+id/sectionBox2"
         android:layout_width="377dp"
-        android:layout_height="59dp"
+        android:layout_height="70dp"
         android:layout_marginTop="6dp"
         android:layout_marginBottom="12dp"
         android:background="@drawable/buttonbg"
@@ -246,13 +247,15 @@
     <View
         android:id="@+id/sectionBox4"
         android:layout_width="377dp"
-        android:layout_height="59dp"
-        android:layout_marginBottom="112dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="72dp"
         android:background="@drawable/buttonbg"
         app:layout_constraintBottom_toTopOf="@+id/logout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/todolist"

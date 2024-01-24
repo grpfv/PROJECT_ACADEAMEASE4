@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.ArrayList;
@@ -23,6 +24,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public MyAdapter(ArrayList<DataClass> dataList, Context context) {
         this.dataList = dataList;
         this.context = context;
+    }
+
+    public MyAdapter(FirestoreRecyclerOptions<DataClass> options, Tab_Album context) {
     }
 
     @NonNull
@@ -41,6 +45,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public int getItemCount() {
 
         return dataList.size();
+    }
+
+    public void startListening() {
+
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{

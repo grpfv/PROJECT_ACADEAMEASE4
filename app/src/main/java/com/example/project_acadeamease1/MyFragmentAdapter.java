@@ -23,7 +23,7 @@ public class MyFragmentAdapter extends FragmentStateAdapter {
             case 2:
                 return new Tab_Files();
             default:
-                return new Tab_Album(); // Default to AlbumFragment
+                 return new Fragment();// Default to AlbumFragment
         }
     }
 

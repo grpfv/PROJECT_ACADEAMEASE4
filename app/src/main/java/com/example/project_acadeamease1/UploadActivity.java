@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
@@ -106,7 +107,9 @@ public class UploadActivity extends AppCompatActivity {
         Intent intent = new Intent(this, CourseDetails.class);
         startActivity(intent);
     }
-}
 
+    public void show(FragmentManager fragmentManager, String uploadActivity) {
+    }
+}
 
 
