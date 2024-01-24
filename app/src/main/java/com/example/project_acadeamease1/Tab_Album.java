@@ -30,7 +30,7 @@ public class Tab_Album extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Initialize Firebase Storage reference
-        storageReference = FirebaseStorage.getInstance().getReference("gs://academease--project.appspot.com");
+        storageReference = FirebaseStorage.getInstance().getReference("Bbfrf4bLzOVeho2KxRgS");
     }
 
     @Override
@@ -62,7 +62,7 @@ public class Tab_Album extends Fragment {
         // Retrieve data from Firebase Storage and update dataList
         // Example: Fetch images from a specific folder in storage
         // You should replace "your_folder_name" with your actual folder name
-        StorageReference imagesRef = storageReference.child("gs://academease--project.appspot.com");
+        StorageReference imagesRef = storageReference.child("Bbfrf4bLzOVeho2KxRgS");
         imagesRef.listAll()
                 .addOnSuccessListener(listResult -> {
                     for (StorageReference item : listResult.getItems()) {

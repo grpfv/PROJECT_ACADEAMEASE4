@@ -22,7 +22,7 @@ public class CourseAdapter extends FirestoreRecyclerAdapter<CourseModel, CourseA
         super(options);
         this.context = context;
 
-        
+
     }
 
     @Override
@@ -61,4 +61,3 @@ public class CourseAdapter extends FirestoreRecyclerAdapter<CourseModel, CourseA
     }
 
 }
-
