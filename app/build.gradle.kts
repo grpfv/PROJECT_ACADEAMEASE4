@@ -47,8 +47,14 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
 
+<<<<<<< Updated upstream
     implementation ("com.makeramen:roundedimageview:2.3.0")
     implementation ("androidx.recyclerview:recyclerview-selection:1.1.0")
     implementation ("com.github.bumptech.glide:glide:4.14.2")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.14.2")
+=======
+    implementation ("com.github.bumptech.glide:glide:4.14.2")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.14.2")
+    implementation ("com.makeramen:roundedimageview:2.3.0")
+>>>>>>> Stashed changes
 }

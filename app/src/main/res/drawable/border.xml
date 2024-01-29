@@ -7,4 +7,9 @@
         android:color="#113946"/>
     <corners
         android:radius="30dp"/>
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
 </shape>

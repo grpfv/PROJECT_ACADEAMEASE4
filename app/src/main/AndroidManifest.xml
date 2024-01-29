@@ -25,6 +25,9 @@
             android:name=".Tab_Album"
             android:exported="false" />
         <activity
+            android:name=".AddtoAlbum"
+            android:exported="false" />
+        <activity
             android:name=".CourseDetails"
             android:exported="false" />
         <activity

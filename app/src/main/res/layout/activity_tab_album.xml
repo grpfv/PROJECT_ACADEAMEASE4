@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -8,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+<<<<<<< Updated upstream:app/src/main/res/layout/activity_tab_album.xml
     <TextView
         android:id="@+id/uploadImagetxt"
         android:layout_width="wrap_content"
@@ -30,12 +30,13 @@
         app:layout_constraintVertical_bias="0.42"
         tools:ignore="TextContrastCheck" />
 
+=======
+>>>>>>> Stashed changes:app/src/main/res/layout/fragment_tab_album.xml
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/recyclerView"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="40dp"
@@ -48,14 +49,22 @@
         app:tint="@color/mocha"
         tools:ignore="DuplicateSpeakableTextCheck,RelativeOverlap" />
 
+<<<<<<< Updated upstream:app/src/main/res/layout/activity_tab_album.xml
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="417dp"
         android:layout_height="wrap_content"
+=======
+    <GridView
+        android:id="@+id/gridView"
+        android:layout_width="match_parent"
+        android:layout_height="652dp"
+>>>>>>> Stashed changes:app/src/main/res/layout/fragment_tab_album.xml
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+<<<<<<< Updated upstream:app/src/main/res/layout/activity_tab_album.xml
         android:layout_centerHorizontal="true"
         android:layout_marginStart="0dp"
         android:layout_marginTop="411dp"
@@ -64,5 +73,10 @@
         android:paddingStart="0dp"
         android:paddingEnd="15dp"
         android:paddingBottom="15dp" />
+=======
+        android:layout_marginTop="79dp"
+        android:numColumns="3" />
+
+>>>>>>> Stashed changes:app/src/main/res/layout/fragment_tab_album.xml
 </RelativeLayout>
 

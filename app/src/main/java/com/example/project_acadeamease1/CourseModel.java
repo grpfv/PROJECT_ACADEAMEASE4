@@ -7,6 +7,7 @@ public class CourseModel {
 
     String subject;
     String instructor;
+    String caption;
     Timestamp timestamp;
 
     public CourseModel() {
@@ -27,6 +28,8 @@ public class CourseModel {
     public void setInstructor(String instructor) {
         this.instructor = instructor;
     }
+    //public String getCaption() {return caption;}
+   // public void setCaption(String caption){this.caption = caption; }
 
     public Timestamp getTimestamp() {
         return timestamp;

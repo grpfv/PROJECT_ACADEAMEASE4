@@ -10,6 +10,7 @@
     <string name="files">Files</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+<<<<<<< Updated upstream
     <string name="albumTab">Album</string>
     <string name="notesTab">Notes</string>
     <string name="filesTab">Files</string>
@@ -41,4 +42,12 @@
     <string name="instructor_deets">Instructor:</string>
     <string name="subject">Subject:</string>
 
+=======
+    <string name="add_album">addalbum\n</string>
+    <string name="img">image\n</string>
+    <string name="backbutton">backbutt\n</string>
+    <string name="uploadbutton">uploadbutt\n</string>
+    <string name="add_a_caption">add a caption..</string>
+    <string name="uploadimage">uplpoadimg\n</string>
+>>>>>>> Stashed changes
 </resources>

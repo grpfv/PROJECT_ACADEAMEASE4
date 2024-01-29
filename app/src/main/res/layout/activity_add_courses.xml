@@ -4,6 +4,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="#EFF0EE"
+    app:cardCornerRadius="100dp"
     tools:context=".AddCourses">
 
     <TextView
@@ -103,6 +104,7 @@
     <!-- Add to Timetable Button -->
     <Button
         android:id="@+id/btnAdd"
+<<<<<<< Updated upstream
         android:layout_width="147dp"
         android:layout_height="38dp"
         android:layout_below="@id/cardInstructor"
@@ -113,5 +115,15 @@
         android:text="Add to Courses"
         android:textColor="#CCC9A6"
         app:backgroundTint="@null" />
+=======
+        android:layout_width="152dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cardInstructor"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="17dp"
+        android:background="@drawable/buttonbg"
+        android:text="Add to Courses"
+        android:textColor="#CCC9A6" />
+>>>>>>> Stashed changes
 
 </RelativeLayout>

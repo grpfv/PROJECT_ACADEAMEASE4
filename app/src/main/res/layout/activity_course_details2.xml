@@ -77,8 +77,15 @@
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+<<<<<<< Updated upstream:app/src/main/res/layout/activity_course_details2.xml
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.157"
+=======
+        app:layout_constraintHorizontal_bias="0.565"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.172"
+>>>>>>> Stashed changes:app/src/main/res/layout/activity_course_details.xml
         tools:ignore="Deprecated,MissingConstraints,NotSibling"
         tools:text="DAY | TIME IN - TIME OUT"
         tools:visibility="visible" />
