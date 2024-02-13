@@ -61,4 +61,3 @@ public class CourseModel {
         this.content = content;
     }
 }
-

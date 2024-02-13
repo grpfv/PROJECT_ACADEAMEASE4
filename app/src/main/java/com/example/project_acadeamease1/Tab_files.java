@@ -11,16 +11,18 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,36 +67,60 @@ public class Tab_files extends Fragment {
     }
 
     private void viewAllFiles() {
-        CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("my_Courses").document("kALPz8E4QdH9EyIUcWch").collection("Files");
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        CollectionReference collectionReference = FirebaseFirestore.getInstance()
+                .collection("Courses")
+                .document(currentUser.getUid())
+                .collection("my_Courses")
+                .document("kALPz8E4QdH9EyIUcWch")           //course id from firestore
+                .collection("Files");
+
+
+
         collectionReference.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 uploads.clear(); // Clear the list before adding new data
                 for (DocumentSnapshot document : task.getResult()) {
-                    pdfClass pdfClass = document.toObject(pdfClass.class);
-                    if (pdfClass != null) {
-                        uploads.add(pdfClass);
+                    pdfClass pdf = document.toObject(pdfClass.class);
+                    if (pdf != null) {
+                        uploads.add(pdf);
                     }
                 }
 
-                String[] fileNames = new String[uploads.size()];
-                for (int i = 0; i < fileNames.length; i++) {
-                    fileNames[i] = uploads.get(i).getName();
+                if (uploads.isEmpty()) {
+                    // Show a message indicating no files found
+                    Toast.makeText(requireContext(), "No files found", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Update the list view with the retrieved files
+                    updateListView();
                 }
-
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(requireContext(), android.R.layout.simple_list_item_1, fileNames) {
-                    @Override
-                    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-                        View view = super.getView(position, convertView, parent);
-                        TextView text = view.findViewById(android.R.id.text1);
-                        text.setTextColor(Color.BLACK);
-                        text.setTextSize(22);
-                        return view;
-                    }
-                };
-
-                listView.setAdapter(adapter);
-
+            } else {
+                // Show a message indicating failure to retrieve files
+                Toast.makeText(requireContext(), "Failed to retrieve files", Toast.LENGTH_SHORT).show();
             }
         });
     }
+
+    private void updateListView() {
+        String[] fileNames = new String[uploads.size()];
+        for (int i = 0; i < fileNames.length; i++) {
+            fileNames[i] = uploads.get(i).getName();
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_list_item_1, fileNames);
+        listView.setAdapter(adapter);
+    }
+
+    // Inside listView.setOnItemClickListener
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        pdfClass pdfUpload = uploads.get(i);
+        String url = pdfUpload.getUrl();
+
+        // Open the PDF file using an intent
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(url));
+        startActivity(intent);
+    }
+
 }

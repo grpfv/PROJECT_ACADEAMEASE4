@@ -57,4 +57,3 @@ public class    CourseAdapter extends FirestoreRecyclerAdapter<CourseModel, Cour
     }
 }
 
-
