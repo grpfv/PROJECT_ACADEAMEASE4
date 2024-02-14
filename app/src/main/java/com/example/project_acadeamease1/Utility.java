@@ -31,16 +31,14 @@ public class Utility {
         return new SimpleDateFormat("MM/dd/yyyy").format(timestamp.toDate());
     }
 
-    static CollectionReference getCollectionReferenceFoFiles(){
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        return FirebaseFirestore.getInstance().collection("Files").document(currentUser.getUid()).collection("my_Files");
-
-    }
     static CollectionReference getCollectionReferenceForFiles(String courseId) {
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         if (currentUser != null) {
-            return FirebaseFirestore.getInstance().collection("Courses").document(currentUser.getUid()).collection("my_Courses")
-                    .document(courseId).collection("Files");
+            return FirebaseFirestore.getInstance().collection("Courses")
+                    .document(currentUser.getUid())
+                    .collection("my_Courses")
+                    .document(courseId)
+                    .collection("Files");
         } else {
 
             return null;

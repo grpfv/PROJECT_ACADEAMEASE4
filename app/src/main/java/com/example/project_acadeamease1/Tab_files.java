@@ -1,16 +1,16 @@
 package com.example.project_acadeamease1;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -28,17 +28,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Tab_files extends Fragment {
-    FloatingActionButton floatingActionButton;
     ListView listView;
+    WebView webView;
+    FloatingActionButton floatingActionButton;
+
     List<pdfClass> uploads;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tab_files, container, false);
-
         floatingActionButton = view.findViewById(R.id.float_btn);
+
         listView = view.findViewById(R.id.listview);
+        webView = view.findViewById(R.id.webView);
+
         uploads = new ArrayList<>();
 
         viewAllFiles();
@@ -47,13 +51,12 @@ public class Tab_files extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 pdfClass pdfUpload = uploads.get(i);
+                String url = pdfUpload.getUrl();
 
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setType("application/pdf");
-                intent.setData(Uri.parse(pdfUpload.getUrl()));
-                startActivity(intent);
+                loadPDF(url);
             }
         });
+
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,10 +76,8 @@ public class Tab_files extends Fragment {
                 .collection("Courses")
                 .document(currentUser.getUid())
                 .collection("my_Courses")
-                .document("kALPz8E4QdH9EyIUcWch")           //course id from firestore
+                .document("kALPz8E4QdH9EyIUcWch") //course id from firestore
                 .collection("Files");
-
-
 
         collectionReference.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
@@ -112,15 +113,15 @@ public class Tab_files extends Fragment {
         listView.setAdapter(adapter);
     }
 
-    // Inside listView.setOnItemClickListener
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        pdfClass pdfUpload = uploads.get(i);
-        String url = pdfUpload.getUrl();
+    private void loadPDF(String url) {
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.setVisibility(View.VISIBLE);
+        webView.setWebViewClient(new WebViewClient());
+        webView.getSettings().setAllowFileAccess(true);
+        webView.getSettings().setAllowContentAccess(true);
+        webView.getSettings().setAllowFileAccessFromFileURLs(true);
+        webView.getSettings().setAllowUniversalAccessFromFileURLs(true);
 
-        // Open the PDF file using an intent
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse(url));
-        startActivity(intent);
+        webView.loadUrl("file:///android_asset/pdfjs/web/viewer.html?file=" + url);
     }
-
 }

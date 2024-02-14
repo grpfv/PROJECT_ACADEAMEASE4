@@ -83,6 +83,7 @@ public class AddtoFiles extends AppCompatActivity {
     private void UploadFiles(Uri data) {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Uploading....");
+        progressDialog.show();
 
         // Initialize Firebase Storage reference
         StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Files").child(pdf_name.getText().toString() + ".pdf");
