@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
@@ -13,16 +12,15 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class FullImage extends AppCompatActivity {
     private ImageView fullImageView;
     Button deleteIcon;
-    final private CollectionReference databaseReference = FirebaseFirestore.getInstance().collection("Album");
+    String courseId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +28,7 @@ public class FullImage extends AppCompatActivity {
         setContentView(R.layout.activity_full_image);
         fullImageView = findViewById(R.id.fullImageView);
         deleteIcon = findViewById(R.id.deletepngbutton);
+        courseId = getIntent().getStringExtra("courseId");
 
         String imageUrl = getIntent().getStringExtra("imageUrl");
 
@@ -57,19 +56,21 @@ public class FullImage extends AppCompatActivity {
     }
 
     private void deleteImage(String imageUrl) {
-        databaseReference.document(imageUrl).delete()
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
+        DocumentReference documentReference = Utility.getCollectionReferenceForAlbum(courseId).document(imageUrl);
+
+        documentReference.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(FullImage.this, "Image deleted", Toast.LENGTH_SHORT).show();
-                        finish();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(FullImage.this, "Failed to delete image", Toast.LENGTH_SHORT).show();
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(FullImage.this, "Image Deleted", Toast.LENGTH_SHORT).show();
+                            finish();
+                        } else {
+                            Toast.makeText(FullImage.this, "Failed Deleting Image", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
     }
+
+
+
 }

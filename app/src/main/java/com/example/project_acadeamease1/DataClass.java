@@ -4,7 +4,7 @@ import com.google.firebase.Timestamp;
 
 public class DataClass {
     private String imageURL, caption;
-    String title, content;
+    String title, content, courseId;
 
     Timestamp timestamp;
 
@@ -34,16 +34,22 @@ public class DataClass {
         this.caption = caption;
     }
 
-    private String id; // Add a field to store the document ID
-    public String getId() {
-            return id;
+    private String docId; // Add a field to store the document ID
+    public String getDocId() {
+            return docId;
     }
 
-    public void setId(String id) {
-            this.id = id;
+    public void setDocId(String docId) {
+            this.docId = docId;
     }
 
+    public String getCourseId() {
+        return courseId;
+    }
 
+    public void setCourseId(String courseId) {
+        this.courseId = courseId;
+    }
 
 
     public String getTitle() {

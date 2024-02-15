@@ -12,6 +12,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -70,7 +71,7 @@ public class AddtoNotes extends AppCompatActivity {
         title = getIntent().getStringExtra("title");
         content = getIntent().getStringExtra("content");
         docId = getIntent().getStringExtra("docId");
-        courseId = getIntent().getStringExtra("courseId"); // Retrieve courseId
+        courseId = getIntent().getStringExtra("courseId");
 
         if (docId != null && !docId.isEmpty()) {
             isEditMode = true;
@@ -104,6 +105,7 @@ public class AddtoNotes extends AppCompatActivity {
         textRecognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS);
     }
 
+
     private void saveNote() {
         String noteTitle = titleEditText.getText().toString().trim();
         String noteContent = contentEditText.getText().toString();
@@ -118,17 +120,28 @@ public class AddtoNotes extends AppCompatActivity {
         note.setContent(noteContent);
         note.setTimestamp(Timestamp.now());
 
+
+        if (docId == null || docId.isEmpty()) {
+            // Generate a new docId for new notes
+            docId = Utility.getCollectionReferenceForNotes(courseId).document().getId();
+        }
+
+        note.setDocId(docId);
+
         saveNoteToFirebase(note);
     }
 
-
     private void saveNoteToFirebase(DataClass note) {
         DocumentReference documentReference;
+
         if (isEditMode) {
             // Update note
             documentReference = Utility.getCollectionReferenceForNotes(courseId).document(docId);
+            docId = documentReference.getId();
+            note.setDocId(docId);
         } else {
             documentReference = Utility.getCollectionReferenceForNotes(courseId).document();
+
         }
 
         documentReference.set(note).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -143,24 +156,6 @@ public class AddtoNotes extends AppCompatActivity {
             }
         });
     }
-
-    private void deleteNoteFromFirebase() {
-        DocumentReference documentReference;
-        documentReference = Utility.getCollectionReferenceForNotes(courseId).document(docId);
-
-        documentReference.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(AddtoNotes.this, "Note Deleted", Toast.LENGTH_SHORT).show();
-                    finish();
-                } else {
-                    Toast.makeText(AddtoNotes.this, "Failed Deleting Note", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-    }
-
 
 
     private void startSpeechToText() {
@@ -242,4 +237,24 @@ public class AddtoNotes extends AppCompatActivity {
             }
         }
     }
+
+
+    void deleteNoteFromFirebase() {
+        DocumentReference documentReference;
+        docId = Utility.getCollectionReferenceForNotes(courseId).document().getId();
+        documentReference = Utility.getCollectionReferenceForNotes(courseId).document(docId);
+
+        documentReference.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(AddtoNotes.this, "Note Deleted", Toast.LENGTH_SHORT).show();
+                    finish();
+                } else {
+                    Toast.makeText(AddtoNotes.this, "Failed Deleting Note", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
 }
